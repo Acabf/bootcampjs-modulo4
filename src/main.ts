@@ -1,10 +1,9 @@
-window.addEventListener('DOMContentLoaded', () => {
     const numeroTurno  = document.getElementById('numero-turno')!;
     const btnPrev  = document.getElementById('prev-turno')!;
     const btnNext  = document.getElementById('next-turno')!;
     const btnReset  = document.getElementById('reset-turno')!;
     const btnSet  = document.getElementById('set-turno')!;
-    const inputTurno  = document.getElementById('input-turno')  as HTMLInputElement;
+    const inputTurno  = document.getElementById('input-turno');
   
     let turnoActual = 1;
   
@@ -26,10 +25,15 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   
     btnSet.addEventListener('click', () => {
-      const valorTurno = parseInt(inputTurno.value, 10);
+      if (
+        inputTurno instanceof HTMLInputElement
+      ) {
+        const valorTurno = parseInt(inputTurno.value, 10); 
+      
       if (!isNaN(valorTurno) && valorTurno > 0) {
         actualizarTurno(valorTurno);
+        } 
       }
     });
-  });
+
   
